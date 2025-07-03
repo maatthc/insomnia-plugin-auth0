@@ -1,0 +1,88 @@
+{
+  "name": "insomnia-plugin-auth0",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build-npm": "node npm/generate-package.js",
+    "build": "esbuild esbuild.js && yarn build-npm",
+    "watch": "esr esbuild.js && yarn install",
+    "clean": "rimraf dist",
+    "publish": "yarn build && cd dist && npm publish",
+    "publish-dry": "yarn build && cd dist && npm publish --dry-run",
+    "install-dev": "copyfiles -u 1 ./dist/* ~/.config/Insomnia/plugins/auth0-insomnia",
+    "install": "copyfiles -u 1 ./dist/* ~/.config/Insomnia/plugins/insomnia-auth0-insomnia",
+    "lint:oxlint": "oxlint . --fix --ignore-path .gitignore",
+    "lint:eslint": "eslint . --fix",
+    "lint": "run-s lint:*",
+    "format": "prettier --write src/",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "prepare": "husky"
+  },
+  "watch": {
+    "watch-trigger": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts,js"
+    }
+  },
+  "insomnia": {
+    "name": "insomnia-plugin-auth0",
+    "displayName": "Auth0 Plugin for Insomnia",
+    "description": "This plugin allows you to authenticate with Auth0 in Insomnia, providing a seamless way to manage your Auth0 tokens and use them in your requests.",
+    "images": {
+      "icon": "images/icon.svg"
+    },
+    "publisher": {
+      "name": "Alexandre Andrade",
+      "icon": "https://avatars.githubusercontent.com/u/1077319?s=250"
+    },
+    "applications": {
+      "designer": "*",
+      "core": "*",
+      "cli": "*"
+    }
+  },
+  "repository": {
+    "url": "https://github.com/maatthc/insomnia-plugin-auth0"
+  },
+  "keywords": [
+    "auth0",
+    "authentication",
+    "insomnia",
+    "plugin"
+  ],
+  "main": "main.js",
+  "author": "Alexandre Andrade <maatthc>",
+  "license": "MIT",
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^2.2.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.29.0",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "copyfiles": "^2.4.1",
+    "esbuild": "^0.25.5",
+    "esbuild-runner": "^2.2.2",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "happy-dom": "^18.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "npm-run-all2": "^8.0.4",
+    "oxlint": "^1.2.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "semver": "^7.7.2",
+    "vitest": "^3.2.4"
+  }
+}

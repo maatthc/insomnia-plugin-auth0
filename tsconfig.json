@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ESNEXT", 
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": false ,
+    "esModuleInterop": true, 
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
+    "lib": [
+      "ESNEXT",
+      "DOM"
+    ],
+  },
+  "include": [
+    ".eslintrc.js",
+    "esbuild.ts",
+    "package.json",
+    "src",
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+  ]
+}
