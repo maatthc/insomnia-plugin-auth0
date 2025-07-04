@@ -58,7 +58,7 @@ Set the following environment variables in your [Insomnia environment](https://d
 
 ## TODO
 
-- [ ] Check if we need to refresh 'manually' the access token
+- [x] Check if we need to refresh 'manually' the access token: Nope
 - [ ] Add Request Auto retry on Login
 - [ ] Add better httpServer responses: perhaps use Insomnia's welcome animated background
 - [ ] Check for msg: Auth0 configuration changed

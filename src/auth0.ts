@@ -119,7 +119,7 @@ export class Auth0 {
   private async findAuth0Instance(context: Context): Promise<Auth0Instance | null> {
     if (!this.auth0Instances || 1 > this.auth0Instances.length) {
       info('No Auth0 instances configured')
-      return 
+      return
     }
     const url = context.request.getUrl()
     debug(`Finding Auth0 instance for URL: ${url}`)
@@ -128,15 +128,12 @@ export class Auth0 {
   }
 
   private async login(instance: Auth0Instance) {
-    if (!instance) {return}
+    if (!instance) {
+      return
+    }
     try {
       info(`Logging in for domain ${instance.domain}..`)
       await instance.auth0.loginWithRedirect({ authorizationParams: instance.authorizationParams })
-      // TODO: Uncomment the interval logic if Auth0 requires periodic token refresh
-      // instance.interval = window.setInterval(async () => {
-      //   info(`Refreshing token silently due timeout(${instance.interval}) for domain ${instance.domain} ...`)
-      //   instance.token = await instance.auth0.getTokenSilently()
-      // }, instance.tokenTimeout)
     } catch (error) {
       error(`Log in failed :${error}`)
     }
@@ -148,7 +145,9 @@ export class Auth0 {
       return false
     }
     debug(`Checking if user is authenticated for domain: ${instance.domain}`)
-    if (!(await instance?.auth0?.isAuthenticated())) {return false}
+    if (!(await instance?.auth0?.isAuthenticated())) {
+      return false
+    }
 
     try {
       instance.token = await instance.auth0.getTokenSilently({
@@ -187,7 +186,9 @@ export class Auth0 {
   }
 
   public applyHook = async (context: Context) => {
-    if (this.ignoreRequest(context)) {return}
+    if (this.ignoreRequest(context)) {
+      return
+    }
     await this.manageConfiguration(context)
     await this.manageAuthentication(context)
     await this.manageHeader(context)
