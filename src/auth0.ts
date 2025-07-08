@@ -164,10 +164,8 @@ export class Auth0 {
     const method = context.request.getMethod().toUpperCase()
     const instance = await this.findAuth0Instance(context)
     if (instance?.urlMethods.includes(method)) {
-      if (await this.isLogged(instance)) {
-        info(`User is authenticated, setting Auth token for domain: ${instance.domain}`)
-        context.request.setHeader('Authorization', `${instance.auth0AuthType} ${instance.token}`)
-      }
+      info(`User is authenticated, setting Auth token for domain: ${instance.domain}`)
+      context.request.setHeader('Authorization', `${instance.auth0AuthType} ${instance.token}`)
     }
   }
 
