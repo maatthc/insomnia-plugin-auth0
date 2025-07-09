@@ -1,5 +1,5 @@
 import { createAuth0Client } from '@auth0/auth0-spa-js'
-import server from './http-server'
+import server from './http/http-server'
 import type { Auth0Instance, Config, Context } from './types'
 import { debug, error, info, warn } from './logger'
 

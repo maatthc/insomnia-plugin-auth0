@@ -1,7 +1,7 @@
-import type { MockInstance } from 'vitest';
+import type { MockInstance } from 'vitest'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import * as Auth0Client from '@auth0/auth0-spa-js'
-import * as httpServer from './http-server'
+import * as httpServer from './http/http-server'
 import { Auth0 } from './auth0'
 import type { Context } from './types'
 import _config from './fixtures/insomnia-config.json'

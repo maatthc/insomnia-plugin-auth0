@@ -1,4 +1,4 @@
-import type { Auth0Client, Auth0ClientOptions } from '@auth0/auth0-spa-js'
+import type { User as Auth0User, Auth0Client, Auth0ClientOptions } from '@auth0/auth0-spa-js'
 
 export interface Auth0Instance extends Auth0ClientOptions {
   auth0?: Auth0Client
@@ -24,3 +24,5 @@ export interface Context {
     getUrl: () => string
   }
 }
+
+export type User = Auth0User

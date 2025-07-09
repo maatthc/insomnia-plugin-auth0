@@ -11,7 +11,8 @@ build({
   // watch: Boolean(process.env.ESBUILD_WATCH),
   platform: 'node',
   loader: {
-    '.svg': 'text'
+    '.svg': 'text',
+    '.html': 'text'
   },
   plugins: []
 })

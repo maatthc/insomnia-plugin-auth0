@@ -1,7 +1,7 @@
 import express from 'express'
 import { authenticatedHTML, logoutHTML } from './html'
-import { debug, info, success } from './logger'
-import type { Auth0Instance } from './types'
+import { debug, info, success } from '../logger'
+import type { Auth0Instance } from '../types'
 
 const app = express()
 
