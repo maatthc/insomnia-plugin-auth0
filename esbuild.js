@@ -10,5 +10,8 @@ build({
   outfile: './dist/main.js',
   // watch: Boolean(process.env.ESBUILD_WATCH),
   platform: 'node',
+  loader: {
+    '.svg': 'text'
+  },
   plugins: []
 })
