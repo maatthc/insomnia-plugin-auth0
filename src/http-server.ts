@@ -1,4 +1,5 @@
 import express from 'express'
+import { authenticatedHTML, logoutHTML } from './html'
 import { debug, info, success } from './logger'
 import type { Auth0Instance } from './types'
 
@@ -12,7 +13,7 @@ const server = async (auth0Instances: Auth0Instance[], port: number) => {
 
     if (isLogout) {
       info('Logging out user..')
-      res.send('<h1>Logout successful</h1>')
+      res.send(logoutHTML())
       return
     }
     try {
@@ -26,7 +27,7 @@ const server = async (auth0Instances: Auth0Instance[], port: number) => {
             })
           )
           const user = await instance.auth0.getUser()
-          res.send(`<h1>Auth0 : ${user ? 'Welcome' : 'Failed'}</h1>\n<h3>Nickname: ${user.nickname}</h3>\n<h3>Email: ${user.email}</h3>`)
+          res.send(authenticatedHTML(user))
         })
       )
     } catch {}
