@@ -58,18 +58,13 @@ Set the following environment variables in your [Insomnia environment](https://d
 
 ## TODO
 
-- [x] Check if we need to refresh 'manually' the access token: Nope
+- [x] Check if we need to refresh 'manually' the access token: follows "Refresh Token Expiration" in Auth0 configuration: 30 days
 - [ ] Add Request Auto retry on Login
-- [ ] Add better httpServer responses: perhaps use Insomnia's welcome animated background
 - [ ] Check for msg: Auth0 configuration changed
-- [ ] Dont call isLogged multiple times
-- [ ] Dont call 'Finding instance' multiple times
 - [ ] Write test for applyHook 
 - [ ] Should/could return ealier on applyHook?
 - [ ] Add a step to verify configs that might be missing
-- [ ] Destroy http server on config change 
 - [ ] Add Vue/Svelt component for the Auth0 login/logout
-- [ ] Write about benefits of : experimentation -> types -> data driven -> tests
-- [ ] Fix scripts in package.json 
-- [ ] Refactor npm/generate-package.js and generate screenshots
+- [ ] Generate screenshots
+- [ ] Fix tests
 - [ ] Publish to npm
