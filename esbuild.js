@@ -1,4 +1,5 @@
 import { build } from 'esbuild'
+import vuePlugin from 'esbuild-plugin-vue3'
 
 build({
   bundle: true,
@@ -14,5 +15,5 @@ build({
     '.svg': 'text',
     '.html': 'text'
   },
-  plugins: []
+  plugins: [vuePlugin()]
 })

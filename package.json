@@ -72,6 +72,7 @@
     "axios": "^1.10.0",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.25.5",
+    "esbuild-plugin-vue3": "^0.4.2",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
