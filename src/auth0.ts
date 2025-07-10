@@ -6,6 +6,7 @@ import { debug, info, warn } from './logger'
 export class Auth0 {
   existingConfig: Config = undefined
   auth0Instances: Auth0Instance[] = []
+  httpServer = null
 
   constructor() {
     info('Plugin constructed.')
@@ -101,7 +102,15 @@ export class Auth0 {
       })
     )
     this.monitorServerNotification()
-    await server(this.auth0Instances, this.existingConfig.auth0HttpServerPort)
+    this.httpServer = await server(this.auth0Instances, this.existingConfig.auth0HttpServerPort)
+  }
+
+  private closeServer() {
+    if (this.httpServer) {
+      warn('Shutting down httpServer')
+      const res = this.httpServer.close()
+      this.httpServer = null
+    }
   }
 
   public async manageAuthentication(context: Context) {

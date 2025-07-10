@@ -37,6 +37,13 @@ const workspaceActions = [
     action: async () => {
       await auth0.logout()
     }
+  },
+  {
+    label: 'Auth0 Shutdown',
+    icon: 'fire',
+    action: async () => {
+      await auth0.closeServer()
+    }
   }
 ]
 

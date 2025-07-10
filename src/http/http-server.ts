@@ -33,8 +33,10 @@ const server = async (auth0Instances: Auth0Instance[], port: number) => {
     } catch {}
   })
 
-  app.listen(port, () => {
+  const server = app.listen(port, () => {
     success(`HTTP Server is running on http://localhost:${port}`)
   })
+
+  return server
 }
 export default server
