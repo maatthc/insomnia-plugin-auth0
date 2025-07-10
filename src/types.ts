@@ -23,6 +23,9 @@ export interface Context {
     getMethod: () => string
     getUrl: () => string
   }
+  app: {
+    dialog: (title: string, element: Element, options: Record<string, boolean>) => void
+  }
 }
 
 export type User = Auth0User
