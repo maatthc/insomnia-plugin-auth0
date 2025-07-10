@@ -1,34 +1,20 @@
-// import './assets/main.css'
-//
-// import { createApp } from 'vue'
-// import App from './App.vue'
-//
-// createApp(App).mount('#app')
-
 import { Auth0 } from './auth0'
+import type { Context } from './types'
+import injectVue from './vue'
 
 const auth0 = new Auth0()
-
-//TODO: remove
-// Should query for element until it is found and removed
-// const removeUIElementsIdontLike = () => {
-//   var element = window.document.querySelector('[aria-label^="Invite collaborators"]')
-//   if (element) {
-//     element.style.display = 'none'
-//     return
-//   }
-//   info('Element not found, skipping style change')
-// }
 
 const requestHooks = [auth0.applyHook]
 
 const workspaceActions = [
   {
     label: 'Auth0 Login',
-    icon: 'truck-fast',
-    action: async () => {
-      //TODO: implement
-      // await auth0.loginWithRedirect()
+    icon: 'shield-halved',
+    action: async (context: Context) => {
+      const vue = document.createElement('div')
+      vue.innerText = '{{message}}'
+      injectVue(vue)
+      context.app.dialog('Auth0', vue, { tall: true, wide: true })
     }
   },
   {
@@ -43,6 +29,18 @@ const workspaceActions = [
     icon: 'fire',
     action: async () => {
       auth0.closeServer()
+    }
+  },
+  {
+    label: 'Remove "Invite"',
+    icon: 'poo',
+    action: async () => {
+      var element = window.document.querySelector('[aria-label^="Invite collaborators"]') as HTMLElement
+      if (element) {
+        element.style.display = 'none'
+        return
+      }
+      console.info('Element not found, skipping style change')
     }
   }
 ]
