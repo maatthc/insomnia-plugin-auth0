@@ -1,5 +1,8 @@
 import type { User } from '../types'
-var page: string = require('./page.html')
+
+if (process.env.MODE === 'test') var page = ''
+else var page: string = require('./page.html')
+
 const svg: string = require('../../images/icon.svg')
 
 const encodedSVG = svg.replace(/"/g, '%22').replace(/#/g, '%23')
