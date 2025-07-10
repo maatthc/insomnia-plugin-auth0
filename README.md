@@ -32,7 +32,6 @@ Set the following environment variables in your [Insomnia environment](https://d
       "auth0AuthType": "Bearer",
       "domain": "https://auth-dev.test.com",
       "clientId": "clientIdDev",
-      "tokenTimeout": 240000,
       "authorizationParams": {
         "audience": "https://api.dev.test.com/gateway/graphql",
         "scope": "openid profile email offline_access"
@@ -44,7 +43,6 @@ Set the following environment variables in your [Insomnia environment](https://d
       "auth0AuthType": "Bearer",
       "domain": "https://auth-nonprod.test.com",
       "clientId": "clientIdNonProd",
-      "tokenTimeout": 240000,
       "authorizationParams": {
         "audience": "https://api.nonprod.test.com/gateway/graphql",
         "scope": "openid profile email offline_access"
@@ -66,5 +64,4 @@ Set the following environment variables in your [Insomnia environment](https://d
 - [ ] Add a step to verify configs that might be missing
 - [ ] Add Vue/Svelt component for the Auth0 login/logout
 - [ ] Generate screenshots
-- [ ] Fix tests
 - [ ] Publish to npm

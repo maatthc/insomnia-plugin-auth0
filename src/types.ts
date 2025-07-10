@@ -4,8 +4,8 @@ export interface Auth0Instance extends Auth0ClientOptions {
   auth0?: Auth0Client
   token?: string
   interval?: number
-  urlRegexs?: RegExp[]
-  urlMethods?: string[]
+  urlRegexs: RegExp[]
+  urlMethods: string[]
   auth0AuthType?: string
 }
 

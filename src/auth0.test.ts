@@ -40,17 +40,17 @@ describe('Auth0 Class Tests', () => {
 
   describe('ignoreRequest', () => {
     test('should return true if introspection query', () => {
-      context.request.getBody.mockReturnValue({ text: 'IntrospectionQuery' })
+      context.request.getBody = vi.fn().mockReturnValue({ text: 'IntrospectionQuery' })
       expect(auth0.ignoreRequest(context)).toBe(true)
     })
 
     test('should return true if Authorization header already set', () => {
-      context.request.getHeader.mockReturnValue('Bearer token')
+      context.request.getHeader = vi.fn().mockReturnValue('Bearer token')
       expect(auth0.ignoreRequest(context)).toBe(true)
     })
 
     test('should return true if no Auth0 instances configured', () => {
-      context.request.getEnvironment.mockReturnValue({})
+      context.request.getEnvironment = vi.fn().mockReturnValue({})
       expect(auth0.ignoreRequest(context)).toBe(true)
     })
 
@@ -121,7 +121,7 @@ describe('Auth0 Class Tests', () => {
 
     test('should call getTokenSilently if authenticated', async () => {
       isAuthenticated.mockResolvedValue(true)
-      context.request.getUrl.mockReturnValue('https://api.nonprod.test.com')
+      context.request.getUrl = vi.fn().mockReturnValue('https://api.nonprod.test.com')
 
       await auth0.manageConfiguration(context)
       await auth0.manageAuthentication(context)
@@ -158,14 +158,14 @@ describe('Auth0 Class Tests', () => {
 
     test('should not add Auth header if request url regex do not match configuration', async () => {
       isAuthenticated.mockResolvedValue(true)
-      context.request.getUrl.mockReturnValue('https://api.prod.test.com')
+      context.request.getUrl = vi.fn().mockReturnValue('https://api.prod.test.com')
       await setup()
       expect(context.request.setHeader).not.toHaveBeenCalled()
     })
 
     test('should not add Auth header if request method do not match configuration', async () => {
       isAuthenticated.mockResolvedValue(true)
-      context.request.getUrl.mockReturnValue('https://api.nonprod.test.com')
+      context.request.getUrl = vi.fn().mockReturnValue('https://api.nonprod.test.com')
       await setup()
       expect(context.request.setHeader).not.toHaveBeenCalled()
     })

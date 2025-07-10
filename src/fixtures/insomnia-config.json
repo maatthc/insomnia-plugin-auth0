@@ -6,7 +6,6 @@
       "auth0AuthType": "Bearer",
       "domain": "https://auth-dev.test.com",
       "clientId": "clientIdDev",
-      "tokenTimeout": 240000,
       "authorizationParams": {
         "audience": "https://api.dev.test.com/gateway/graphql",
         "scope": "openid profile email offline_access"
@@ -18,7 +17,6 @@
       "auth0AuthType": "Bearer",
       "domain": "https://auth-nonprod.test.com",
       "clientId": "clientIdNonProd",
-      "tokenTimeout": 240000,
       "authorizationParams": {
         "audience": "https://api.nonprod.test.com/gateway/graphql",
         "scope": "openid profile email offline_access"
