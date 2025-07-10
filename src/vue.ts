@@ -1,14 +1,20 @@
 import { createApp, ref } from 'vue'
 
-const injectVue = (element: Element) => {
+// Vue course: https://www.youtube.com/watch?v=s9URD3PefTk&t=66setup
+//
+const createVue = (): Element => {
+  const vue = document.createElement('div')
+  vue.innerText = '{{message}}'
+
   createApp({
     setup() {
-      const message = ref('VueJs working!')
+      const message = ref(`VueJs working! Date: ${new Date()}`)
       return {
         message
       }
     }
-  }).mount(element)
+  }).mount(vue)
+  return vue
 }
 
-export default injectVue
+export default createVue

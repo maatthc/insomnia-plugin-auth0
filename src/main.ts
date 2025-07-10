@@ -1,6 +1,6 @@
 import { Auth0 } from './auth0'
 import type { Context } from './types'
-import injectVue from './vue'
+import createVue from './vue'
 
 const auth0 = new Auth0()
 
@@ -11,9 +11,7 @@ const workspaceActions = [
     label: 'Auth0 Login',
     icon: 'shield-halved',
     action: async (context: Context) => {
-      const vue = document.createElement('div')
-      vue.innerText = '{{message}}'
-      injectVue(vue)
+      const vue = createVue()
       context.app.dialog('Auth0', vue, { tall: true, wide: true })
     }
   },
