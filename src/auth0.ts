@@ -105,10 +105,10 @@ export class Auth0 {
     this.httpServer = await server(this.auth0Instances, this.existingConfig.auth0HttpServerPort)
   }
 
-  private closeServer() {
+  public closeServer() {
     if (this.httpServer) {
       warn('Shutting down httpServer')
-      const res = this.httpServer.close()
+      this.httpServer.close()
       this.httpServer = null
     }
   }
