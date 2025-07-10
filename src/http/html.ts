@@ -8,10 +8,10 @@ const svg: string = require('../../images/icon.svg')
 const encodedSVG = svg.replace(/"/g, '%22').replace(/#/g, '%23')
 
 const generateHTML = (content: string): string => {
-  page = page.replace('{{svg}}', encodedSVG)
-  page = page.replace('{{svg}}', encodedSVG)
-  page = page.replace('{{content}}', content)
-  return page
+  var body = page.replace('{{svg}}', encodedSVG)
+  body = body.replace('{{svg}}', encodedSVG)
+  body = body.replace('{{content}}', content)
+  return body
 }
 
 const authenticatedHTML = (user: User): string => {
