@@ -5,7 +5,17 @@ const msg = ref('Hello World!')
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-  <hr/>
-  <input v-model="msg" style="background-color: #8efcff; color: black"/>
+  <div class="a0-container">
+    <img class="a0-logo" src="images/icon.svg" />
+    <header class="a0-header">
+      <div>Domains</div>
+      <div>Status</div>
+      <div>Action</div>
+    </header>
+    <div class="a0-instance">
+      <div>Domains</div>
+      <div>Status</div>
+      <div>Action</div>
+    </div>
+  </div>
 </template>
