@@ -1,5 +1,6 @@
 import { build } from 'esbuild'
 import vuePlugin from 'esbuild-plugin-vue3'
+import InlineCSSPlugin from 'esbuild-plugin-inline-css'
 
 build({
   bundle: true,
@@ -15,5 +16,5 @@ build({
     '.svg': 'text',
     '.html': 'text'
   },
-  plugins: [vuePlugin()]
+  plugins: [vuePlugin(), InlineCSSPlugin()]
 })
