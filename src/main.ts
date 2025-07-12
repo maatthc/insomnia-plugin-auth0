@@ -33,7 +33,7 @@ const workspaceActions = [
   },
   {
     label: 'Auth0 Shutdown',
-    icon: 'fire',
+    icon: 'power-off',
     action: async () => {
       auth0.closeServer()
     }
