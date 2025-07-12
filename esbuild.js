@@ -14,7 +14,8 @@ build({
   platform: 'node',
   loader: {
     '.svg': 'text',
-    '.html': 'text'
+    '.html': 'text',
+    '.png': 'dataurl'
   },
   plugins: [vuePlugin(), InlineCSSPlugin()]
 })
