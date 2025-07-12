@@ -26,6 +26,9 @@ export interface Context {
   app: {
     dialog: (title: string, element: Element, options: Record<string, boolean>) => void
   }
+  network: {
+    sendRequest: (request: Record<string, boolean>) => Promise<void>
+  }
 }
 
 export type User = Auth0User
