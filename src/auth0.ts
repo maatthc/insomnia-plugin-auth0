@@ -7,6 +7,7 @@ export class Auth0 {
   existingConfig: Config = undefined
   auth0Instances: Auth0Instance[] = []
   httpServer = null
+  requestToForceInitialization = false
 
   constructor() {
     info('Plugin constructed.')
@@ -169,6 +170,18 @@ export class Auth0 {
     }
   }
 
+  private ignoreAuthentication(): boolean {
+    if (this.requestToForceInitialization) {
+      this.requestToForceInitialization = false
+      return true
+    }
+    return false
+  }
+
+  public forceInitialization() {
+    this.requestToForceInitialization = true
+  }
+
   public async manageHeader(context: Context) {
     const method = context.request.getMethod().toUpperCase()
     const instance = await this.findAuth0Instance(context)
@@ -193,10 +206,9 @@ export class Auth0 {
   }
 
   public applyHook = async (context: Context) => {
-    if (this.ignoreRequest(context)) {
-      return
-    }
+    if (this.ignoreRequest(context)) return
     await this.manageConfiguration(context)
+    if (this.ignoreAuthentication()) return
     await this.manageAuthentication(context)
     await this.manageHeader(context)
   }
