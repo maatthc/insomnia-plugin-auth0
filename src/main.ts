@@ -25,13 +25,6 @@ const workspaceActions = [
     }
   },
   {
-    label: 'Auth0 Logout',
-    icon: 'truck-fast',
-    action: async () => {
-      await auth0.logout()
-    }
-  },
-  {
     label: 'Auth0 Shutdown',
     icon: 'power-off',
     action: async () => {
