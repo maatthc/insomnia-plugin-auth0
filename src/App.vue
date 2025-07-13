@@ -11,7 +11,7 @@ const auth0Instances = ref(auth0?.auth0Instances)
 <template>
   <div class="a0-container bg-[--hl-xs] notice surprise">
     <img class="a0-logo" :src="imgSrc" />
-    <div v-if="auth0Instances?.length > 0">
+    <div v-if="auth0Instances?.length > 0" style="width:100%; padding-left: 5vh; padding-right: 5vh">
       <header class="a0-header border-b border-solid bg-[--color-bg] text-[--hl]">
         <div style="flex: 2;">Domain</div>
         <div style="flex: 1;">Status</div>
