@@ -1,21 +1,23 @@
 <script setup>
 import { ref } from 'vue'
 import Instance from './Instance.vue'
+import Logo from '../images/icon.svg'
+
 const auth0Instances = ref(auth0.auth0Instances)
 </script>
 
 <template>
   <div class="a0-container bg-[--hl-xs] notice surprise">
-    <img class="a0-logo" src="/home/maat/Development/js/auth0/insomnia-auth0/images/icon.svg" />
+    <img class="a0-logo" :src="Logo" />
     <div v-if="auth0Instances.length > 0">
       <header class="a0-header border-b border-solid bg-[--color-bg] text-[--hl]">
         <div>Domain</div>
         <div>Status</div>
         <div>Action</div>
       </header>
-      <div v-for="instance in auth0Instances">
+      <div v-for="(instance, index) in auth0Instances">
         <Suspense>
-          <Instance :instance="instance" />
+          <Instance :instance :id="index" />
           <template #fallback>
             <div>Loading...</div>
           </template>
