@@ -57,6 +57,5 @@ Set the following environment variables in your [Insomnia environment](https://d
 ## TODO
 
 - [x] Check if we need to refresh 'manually' the access token: follows "Refresh Token Expiration" in Auth0 configuration: 30 days
-- [ ] Add Vue/Svelt component for the Auth0 login/logout
 - [ ] Generate screenshots
 - [ ] Publish to npm
