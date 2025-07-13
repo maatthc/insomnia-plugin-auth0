@@ -1,11 +1,12 @@
 import type { User } from '../types'
+import { encodedSvg } from '../utils'
 
 if (process.env.MODE === 'test') var page = ''
 else var page: string = require('./page.html')
 
 const svg: string = require('../../images/icon.svg')
 
-const encodedSVG = svg.replace(/"/g, '%22').replace(/#/g, '%23')
+const encodedSVG = encodedSvg(svg)
 
 const generateHTML = (content: string): string => {
   var body = page.replace('{{svg}}', encodedSVG)
