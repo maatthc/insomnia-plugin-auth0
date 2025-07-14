@@ -59,7 +59,6 @@ async function execute() {
     fs.mkdirSync('dist')
   }
   fs.writeFileSync('dist/package.json', resultJson)
-  fs.copyFileSync('README.md', 'dist/README.md')
   fs.cpSync('images', 'dist/images', { recursive: true })
 }
 
