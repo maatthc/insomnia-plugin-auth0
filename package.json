@@ -28,7 +28,7 @@
   "insomnia": {
     "name": "insomnia-plugin-auth0",
     "displayName": "Auth0 Plugin for Insomnia",
-    "description": "This plugin allows you to authenticate with Auth0 in Insomnia, providing a seamless way to manage your Auth0 tokens and use them in your requests.",
+    "description": "Seamless store and refresh Auth0 tokens that can be automatically injected into requests, depending on configured urls/methods",
     "images": {
       "icon": "images/icon.svg"
     },
