@@ -30,18 +30,6 @@ const workspaceActions = [
     action: async () => {
       auth0.closeServer()
     }
-  },
-  {
-    label: 'Remove "Invite" button',
-    icon: 'poo',
-    action: async () => {
-      var element = window.document.querySelector('[aria-label^="Invite collaborators"]') as HTMLElement
-      if (element) {
-        element.style.display = 'none'
-        return
-      }
-      console.info('Element not found, skipping style change')
-    }
   }
 ]
 
