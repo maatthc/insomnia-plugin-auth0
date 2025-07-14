@@ -27,7 +27,7 @@ const click = () => {
 
 <template>
     <button @click="click" type="button" tabindex="0"
-        class="btn btn--clicky mt-[--padding-md]"
+        class="btn btn--clicky"
         data-rac="" id="react-aria7835462272-:r24:" style="touch-action: pan-x pan-y pinch-zoom;"
         v-html="elementChildren">
     </button>
