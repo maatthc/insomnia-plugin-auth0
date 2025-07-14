@@ -23,5 +23,5 @@
       }
     }
   ],
-  "auth0HttpServerPort": 3005
+  "auth0HttpServerPort": 3000
 }

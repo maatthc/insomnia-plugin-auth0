@@ -8,7 +8,7 @@ import _config from './fixtures/insomnia-config.json'
 
 describe('Auth0 Class Tests', () => {
   let auth0: Auth0
-  let context: Context
+  let context: Partial<Context>
   let config = _config
 
   vi.mock('@auth0/auth0-spa-js')
@@ -41,21 +41,21 @@ describe('Auth0 Class Tests', () => {
   describe('ignoreRequest', () => {
     test('should return true if introspection query', () => {
       context.request.getBody = vi.fn().mockReturnValue({ text: 'IntrospectionQuery' })
-      expect(auth0.ignoreRequest(context)).toBe(true)
+      expect(auth0.ignoreRequest(context as Context)).toBe(true)
     })
 
     test('should return true if Authorization header already set', () => {
       context.request.getHeader = vi.fn().mockReturnValue('Bearer token')
-      expect(auth0.ignoreRequest(context)).toBe(true)
+      expect(auth0.ignoreRequest(context as Context)).toBe(true)
     })
 
     test('should return true if no Auth0 instances configured', () => {
       context.request.getEnvironment = vi.fn().mockReturnValue({})
-      expect(auth0.ignoreRequest(context)).toBe(true)
+      expect(auth0.ignoreRequest(context as Context)).toBe(true)
     })
 
     test('should return false if Auth0 instances configured and no header set', () => {
-      expect(auth0.ignoreRequest(context)).toBe(false)
+      expect(auth0.ignoreRequest(context as Context)).toBe(false)
     })
   })
 
@@ -67,34 +67,34 @@ describe('Auth0 Class Tests', () => {
     })
 
     test('should call createAuth0Client() if Auth0 not initialized', async () => {
-      auth0.manageConfiguration(context)
+      auth0.manageConfiguration(context as Context)
       expect(Auth0Client.createAuth0Client).toHaveBeenCalledTimes(2)
       expect(logout).not.toHaveBeenCalled()
     })
 
     test('should call monitorServerNotification when authenticated', async () => {
       const addEventListenerSpy = vi.spyOn(document, 'addEventListener')
-      await auth0.manageConfiguration(context)
+      await auth0.manageConfiguration(context as Context)
       expect(addEventListenerSpy).toHaveBeenCalledWith('Authenticated', expect.any(Function))
     })
 
     test('should use default value if serverPort not provided ', async () => {
       config.auth0HttpServerPort = undefined
       const server = vi.spyOn(httpServer, 'default')
-      await auth0.manageConfiguration(context)
-      expect(server).toHaveBeenCalledWith(expect.any(Object), 3005)
+      await auth0.manageConfiguration(context as Context)
+      expect(server).toHaveBeenCalledWith(expect.any(Object), 3000)
     })
 
     test('should start httpServer when initialized', async () => {
       const server = vi.spyOn(httpServer, 'default')
-      await auth0.manageConfiguration(context)
+      await auth0.manageConfiguration(context as Context)
       expect(server).toHaveBeenCalledWith(expect.any(Object), config.auth0HttpServerPort)
     })
 
     test('should call logout if Auth0 is initialized but configs is different', async () => {
-      await auth0.manageConfiguration(context)
+      await auth0.manageConfiguration(context as Context)
       config.auth0HttpServerPort = 4000 // Simulate a change in config
-      await auth0.manageConfiguration(context)
+      await auth0.manageConfiguration(context as Context)
       expect(logout).toHaveBeenCalledTimes(1)
     })
   })
@@ -105,14 +105,14 @@ describe('Auth0 Class Tests', () => {
     })
 
     test('should ignore authentication if not configured', async () => {
-      await auth0.manageAuthentication(context)
+      await auth0.manageAuthentication(context as Context)
       expect(Auth0Client.createAuth0Client).not.toHaveBeenCalled()
       expect(isAuthenticated).not.toHaveBeenCalled()
     })
 
     test('should call loginWithRedirect if not authenticated', async () => {
-      await auth0.manageConfiguration(context)
-      await auth0.manageAuthentication(context)
+      await auth0.manageConfiguration(context as Context)
+      await auth0.manageAuthentication(context as Context)
       expect(Auth0Client.createAuth0Client).toHaveBeenCalledTimes(2)
       expect(isAuthenticated).toHaveBeenCalledTimes(1)
       expect(loginWithRedirect).toHaveBeenCalledTimes(1)
@@ -123,8 +123,8 @@ describe('Auth0 Class Tests', () => {
       isAuthenticated.mockResolvedValue(true)
       context.request.getUrl = vi.fn().mockReturnValue('https://api.nonprod.test.com')
 
-      await auth0.manageConfiguration(context)
-      await auth0.manageAuthentication(context)
+      await auth0.manageConfiguration(context as Context)
+      await auth0.manageAuthentication(context as Context)
       expect(Auth0Client.createAuth0Client).toHaveBeenCalledTimes(2)
       expect(isAuthenticated).toHaveBeenCalledTimes(1)
       expect(loginWithRedirect).toHaveBeenCalledTimes(0)
@@ -134,9 +134,9 @@ describe('Auth0 Class Tests', () => {
 
   describe('manageHeader', async () => {
     const setup = async () => {
-      await auth0.manageConfiguration(context)
-      await auth0.manageAuthentication(context)
-      await auth0.manageHeader(context)
+      await auth0.manageConfiguration(context as Context)
+      await auth0.manageAuthentication(context as Context)
+      await auth0.manageHeader(context as Context)
     }
 
     beforeEach(() => {
