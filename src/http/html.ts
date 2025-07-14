@@ -2,7 +2,7 @@ import type { User } from '../types'
 import { encodedSvg } from '../utils'
 
 if (process.env.MODE === 'test') var page = ''
-else var page: string = require('./page.html')
+else var page: string = require('./template.html')
 
 const svg: string = require('../../images/icon.svg')
 
