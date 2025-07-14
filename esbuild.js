@@ -10,7 +10,6 @@ build({
   minify: true,
   format: 'cjs',
   outfile: './dist/main.js',
-  // watch: Boolean(process.env.ESBUILD_WATCH),
   platform: 'node',
   loader: {
     '.svg': 'text',

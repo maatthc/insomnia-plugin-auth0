@@ -1,9 +1,9 @@
 {
   "rules": {
-    "no-unused-vars":"warn"
-  }
+    "no-unused-vars": "warn"
+  },
   "categories": {
     "correctness": "error",
     "perf": "error"
-  },
+  }
 }
