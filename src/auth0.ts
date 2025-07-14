@@ -58,7 +58,7 @@ export class Auth0 {
     }
     return {
       auth0Instances: config?.auth0Instances,
-      auth0HttpServerPort: config?.auth0HttpServerPort || 3005
+      auth0HttpServerPort: config?.auth0HttpServerPort || 3000
     }
   }
 
