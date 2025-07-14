@@ -51,7 +51,8 @@ async function execute() {
     repository: dataObj.repository,
     bugs: dataObj.bugs,
     insomnia: dataObj.insomnia,
-    dependencies: dataObj.dependencies
+    dependencies: dataObj.dependencies,
+    keywords: dataObj.keywords
   }
 
   const resultJson = JSON.stringify(resultObj, undefined, 2)
@@ -59,7 +60,10 @@ async function execute() {
     fs.mkdirSync('dist')
   }
   fs.writeFileSync('dist/package.json', resultJson)
-  fs.cpSync('images', 'dist/images', { recursive: true })
+  fs.copyFileSync('README.md', 'dist/README.md')
+  fs.mkdirSync('dist/images')
+  fs.copyFileSync('images/icon.svg', 'dist/images/icon.svg')
+  fs.cpSync('screenshots', 'dist/screenshots', { recursive: true })
 }
 
 execute()
