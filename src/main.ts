@@ -21,18 +21,18 @@ const workspaceActions = [
         if (req) await context.network.sendRequest(req)
       }
       const vue = createVue()
-      context.app.dialog('Auth0', vue, { tall: true, wide: true })
+      context.app.dialog('Auth0 Plugin', vue, { tall: true, wide: true })
     }
   },
   {
-    label: 'Auth0 Shutdown',
+    label: 'Auth0 Server Shutdown',
     icon: 'power-off',
     action: async () => {
       auth0.closeServer()
     }
   },
   {
-    label: 'Remove "Invite"',
+    label: 'Remove "Invite" button',
     icon: 'poo',
     action: async () => {
       var element = window.document.querySelector('[aria-label^="Invite collaborators"]') as HTMLElement
